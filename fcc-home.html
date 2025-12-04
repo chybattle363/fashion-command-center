@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Fashion Command Center</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="fcc-home.css"/>
+    </head>
+    <body>
+        <!--Top branding/ log/ page title-->
+        <header class="fcc-header">
+            <h1>Fashion Command Center</h1>
+            <p class="fcc-tagline">Your all-in-one style HQ</p>
+
+            <!--Theme Switcher-->
+            <div class="theme-switcher">
+                <label for="theme-select">Theme:</label>
+                <select id="theme-select">
+                    <option value="chill">Chill</option>
+                    <option value="edgy">Edgy</option>
+                    <option value="luxe">Luxe</option>
+                </select>
+            </div>
+        </header>
+
+        <!--Navigation: buttons/tabs to switch between sections-->
+        <nav class="fcc-nav">
+            <button class="nav-btn"
+        data-target="dashboard">Dashboard</button>
+            <button class="nav-btn"
+        data-target="outfit-planner">Outfit Planner</button>
+            <button class="nav-btn" data-target="event-stylist">Event Stylist</button>
+            <button class="nav-btn" data-target="trip-planner">Trip Planner</button>
+            <button class="nav-btn" data-target="wishlist">Wishlist & Budget</button>
+            <button class="nav-btn" data-target="style-notes">Style Notes</button>
+        </nav>
+
+        <main>
+            <!--1. DASHBOARD-->
+            <section id="dashboard" class="fcc-section active-section">
+                <h2>Dashboard</h2>
+
+                <!--Quick OOTD suggestion area-->
+                <section class="dashboard-card" aria-labelledby="ootd-heading">
+                    <h3 id="ootd-heading">Today's Outfit Vibe</h3>
+                    <form id="ootd-form">
+                        <label for="mood-select">Mood</label>
+                        <select id="mood-select" name="mood">
+                            <option value="">Select mood</option>
+                            <option value="chill">Chill</option>
+                            <option value="dressy">Dressy</option>
+                            <option value="edgy">Edgy</option>
+                            <option value="work">Work</option>
+                        </select>
+
+                        <label for="weather-select">Weather</label>
+                        <select id="weather-select" name="weather">
+                            <option value="">Select Weather</option>
+                            <option value="warm">Warm</option>
+                            <option value="cool">Cool</option>
+                            <option value="rainy">Rainy</option>
+                        </select>
+
+                        <button type="submit">Get OOTD Suggestion</button>
+                    </form>
+
+                    <div id="ootd-result" class="dashboard-result">
+                        <!--JS will insert today's suggestion here-->
+                    </div>
+                </section>
+
+                <!--Quick shortcuts to other tools-->
+                <section class="dashboard-shortcuts panel">
+                    <h3>Quick Shortcuts</h3>
+                    <div class="shortcut-grid">
+                        <button type="button" class="shortcut-btn" data-target="outfit-planner">
+                            Plan an Outfit
+                        </button>
+                        <button type="button" class="shortcut-btn" data-target="trip-planner">
+                            Pack for a trip
+                        </button>
+                        <button type="button" class="shortcut-btn" data-trarget="wishlist">
+                            View Wishlist
+                        </button>
+                        <button type="button" class="shortcut-btn" data-target="style-notes">
+                            Style Notes
+                        </button>
+                    </div>
+                </section>
+            </section>
+
+            <!--2. OUTFIT PLANNER-->
+            <section id="outfit-planner" class="fcc-section">
+                <h2>Outfit Planner</h2>
+
+                <form id="outfit-form" class="panel">
+                    <h3>Create a New Outfit</h3>
+
+                    <label for="outfit-name">Outfit Name</label>
+                    <input type="text" id="outfit-name" name="outfitName" placeholder="Brunch in Blush"/>
+
+                    <label for="top-input">Top</label>
+                    <input type="text" id="top-input" name="top" placeholder="White crop tee"/>
+
+                    <label for="bottom-input">Bottom</label>
+                    <input type="text" id="bottom-input" name="bottom" placeholder="High-waisted jeans"/>
+
+                    <label for="dress-input">Dress (optional)</label>
+                    <input type="text" id="dress-input" name="dress" placeholder="Smocked sundress"/>
+
+                    <label for="shoes-input">Shoes</label>
+                    <input type="text" id="shoes-input" name="shoes" placeholder="Chunky sneakers"/>
+
+                    <label for="accessories-input">Accessories</label>
+                    <input type="text" id="accessories-input" name="accessories" placeholder="Gold hoops, crossbody bag"/>
+
+                    <label for="image-url">Outfit Image URL (optional)</label>
+                    <input type="url" id="image-url" name="imageUrl" placeholder="https://example.com/my-outfit.jpg"/>
+
+                    <label for="occasion-select">Occasion</label>
+                    <select id="occasion-select" name="occasion">
+                        <option value="">Select a season</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="fall">Fall</option>
+                        <option value="winter">Winter</option>
+                    </select>
+
+                    <button type="submit">Save Outfit</button>
+                </form>
+
+                <!--Filters + saved outfits list-->
+                <section class="panel">
+                    <h3>Saved Outfits</h3>
+
+                    <div class="filters">
+                        <label for="filter-occasion">Filter by Occasion</label>
+                        <select id="filter-occasion">
+                            <option value="all">All</option>
+                            <option value="work">Work</option>
+                            <option value="date">Date Night</option>
+                            <option value="casual">Casual</option>
+                            <option value="party">Party</option>
+                            <option value="travel">Travel</option>
+                        </select>
+
+                        <label for="filter-season">Filter by Season</label>
+                        <select id="filter-season">
+                            <option value="all">All</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="fall">Fall</option>
+                            <option value="winter">Winter</option>
+                        </select>
+                    </div>
+
+                    <div id="outfit-list" class="card-grid">
+                        <!--JS will render outfit cards here-->
+                    </div>
+                </section>
+            </section>
+            
+            <!--3. EVENT STYLIST-->
+            <section id="event-stylist" class="fcc-section">
+                <h2>Event Stylist</h2>
+
+                <form id="event-form" class="panel">
+                    <h3>Plan for an Event</h3>
+
+                    <label for="event-name">Event Name</label>
+                    <input type="text" id="event-name" name="eventName" placeholder="Birthday dinner"/>
+
+                    <label for="event-date">Event Date</label>
+                    <input type="date" id="event-date" name="eventDate"/>
+
+                    <label for="event-vibe">Vibe</label>
+                    <select id="event-vibe" name="eventVibe">
+                        <option value="">Select vibe</option>
+                        <option value="chill">Chill</option>
+                        <option value="dressy">Dressy</option>
+                        <option value="edgy">Edgy</option>
+                        <option value="professional">Professional</option>
+                    </select>
+
+                    <button type="submit">Get Outfit Ideas</button>
+                </form>
+
+                <section class="panel">
+                    <h3>Suggested Outfits for This Event</h3>
+                    <div id="event-outfit-suggestions" class="card-grid">
+                        <!--JS will show suggestions here-->
+                    </div>
+                </section>
+            </section>
+
+            <!--4. TRIP/ PACKING PLANNER-->
+            <section id="trip-planner" class="fcc-section">
+                <h2>Trip Planner</h2>
+
+                <form id="trip-form" class="panel">
+                    <h3>Trip Details</h3>
+
+                    <label for="trip-destination">Destination</label>
+                    <input type="text" id="trip-destination" name="destination" placeholder="Atlanta,GA"/>
+
+                    <label for="trip-days">Number of Days</label>
+                    <input type="numnber" id="trip-days" name="days" min="1"/>
+
+                    <label for="trip-vibe">Overall Vibe</label>
+                    <select id="trip-vibe" name="tripVibe">
+                        <option value="">Select vibe</option>
+                        <option value="chill">Chill</option>
+                        <option value="dressy">Dressy</option>
+                        <option value="mixed">Mixed</option>
+                    </select>
+
+                    <button type="submit">Generate Packing List</button>
+                </form>
+
+                <section class="panel">
+                    <h3>Packing List</h3>
+                    <ul id="packing-list">
+                        <!--JS will add list items like "3 tops", "2 bottoms", etc.-->
+
+                    </ul>
+                </section>
+            </section>
+
+            <!--5. WISHLIST & BUDGET-->
+            <section id="wishlist" class="fcc-section">
+                <h2>Wishlist & Budget</h2>
+
+                <form id="wishlist-form" class="panel">
+                    <h3>Add Wishlist Item</h3>
+
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" name="itemName" placeholder="Argyle cardigan"/>
+
+                    <label for="item-store">Store</label>
+                    <input type="text" id="item-store" name="itemStore" placeholder="Online boutique"/>
+
+                    <label for="item-price">Price ($)</label>
+                    <input type="number" id="item-price" name="itemPrice" min="0" step="0.01"/>
+
+                    <label for="item-priority">Priority</label>
+                    <select id="item-priority" name="itemPriority">
+                        <option value="">Select priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+
+                    <button type="submit">Add to Wishlist</button>
+                </form>
+
+                <section class="panel">
+                    <h3>Wishlist Items</h3>
+                    <div id="wishlist-items" class="card-grid">
+                        <!--JS will render wishlist cards here-->
+                    </div>
+
+                    <div class="budget-summary">
+                        <p>Total (all items): $<span id="wishlist-total">0.00</span></p>
+                        <p>High priority total: $<span id="wishlist-high-total">0.00</span></p>
+                    </div>
+                </section>
+            </section>
+
+            <!--6. STYLE NOTES/ CLOSET RULES-->
+            <section id="style-notes" class="fcc-section">
+                <h2>Style Notes & Closet Rules</h2>
+
+                <form id="note-form" class="panel">
+                    <h3>Add a New Note</h3>
+                    <textarea id="note-text" name="noteText" rows="3" placeholder="No buying new jeans until I wear my current 
+                pairs twice."></textarea>
+
+                    <button type="submit">Save Note</button>
+                </form>
+
+                <section class="panel">
+                    <h3>Saved Notes</h3>
+                    <ul id="notes-list">
+                        <!--JS will add <li> style rules here-->
+                    </ul>
+                </section>
+            </section>
+        </main>
+
+        <footer class="fcc-footer">
+            <p>&copy;2025 Fashion Command Center</p>
+        </footer>
+
+        <script src="fcc-home.js"></script>
+    </body>
+</html>

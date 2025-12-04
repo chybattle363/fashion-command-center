@@ -1,0 +1,376 @@
+/* ========================================================================
+    BASE   
+========================================================================= */
+
+:root {
+    --bg: #faf7f4;
+    --panel-bg: #ffffff;
+    --accent: #ffb7d5;         /*soft fashion pink*/
+    --accent-dark: #e99cbf;
+    --text: #333;
+    --subtext: #666;
+    --border: #ddd;
+    --radius: 12px;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    --transition: 0.25s ease;
+}
+
+/* Theme base (Chill = default) is in :root */
+
+body.theme-chill {
+    --bg: #faf7f4;
+    --accent: #ffb7d5;
+    --accent-dark: #e99cbf;
+}
+
+/* Edgy: darker, moodier */
+body.theme-edgy {
+    --bg: #181820;
+    --panel-bg: #23232f;
+    --accent: #ff5c7a;
+    --accent-dark: #e04562;
+    --text: #f7f7f7;
+    --subtext: #b5b5c0;
+    --border: #343446;
+}
+
+/* Luxe: neutral, creamy gold */
+body.theme-luxe {
+    --bg: #f7f3ea;
+    --panel-bg: #ffffff;
+    --accent: #d4af37;
+    --accent-dark: #b89324;
+    --text: #3a3225;
+    --subtext: #7a6c55;
+    --border: #e0d4b8;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    padding-bottom: 50px;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+}
+
+p, label, input, select, textarea, button {
+    font-size: 15px;
+}
+
+/*=================================================
+    HEADER
+==================================================*/
+
+.fcc-header {
+    text-align: center;
+    padding: 25px 10px
+}
+
+.fcc-header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.fcc-tagline {
+    font-size: 16px;
+    color: var(--subtext);
+}
+
+
+.theme-switcher {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+/*==================================================
+    NAVIGATION
+==================================================*/
+
+.fcc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.nav-btn {
+    padding: 10px 14px;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    color: #fff;
+}
+
+.nav-btn:hover {
+    background: var(--accent-dark);
+}
+
+/* Shortcuts in dashboard */
+.shortcut-btn {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.shortcut-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* =======================================================
+    SECTIONS
+======================================================== */
+
+.fcc-section {
+    display: none;
+    padding: 10px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.active-section {
+    display: block;
+}
+
+.fcc-section h2 {
+    margin-top: 5px;
+}
+
+/* Panels/ cards that wrap content */
+.panel {
+    background: var(--panel-bg);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-top: 15px;
+    border: 1px solid var(--border);
+}
+
+/* ==============================================
+    SECTION ANIMATIONS
+============================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fcc-section.animate-in {
+    animation: fadeInUp 0.35s ease both;
+}
+
+/* =============================================
+    FORMS
+============================================== */
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    color: var(--subtext);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 6px;
+    background: #fff;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: var(--transition);
+}
+
+button[type="submit"]:hover {
+    background: var(--accent-dark);
+}
+
+/* ==================================================
+    DASHBOARD
+=================================================== */
+
+.dashboard-card {
+    background: var(--panel-bg);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+.dashboard-result {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px;
+    background: #ffe8f3;
+    border-radius: var(--radius);
+}
+
+.shortcut-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* ==================================================
+    CARDS (Outfits,Wishlist)
+================================================== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.outfit-card,
+.wishlist-card {
+    padding: 15px;
+    border-radius: var(--radius);
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.outfit-card:hover,
+.wishlist-card:hover {
+    transform: translateY(-3px);
+}
+
+.outfit-card h4,
+.wishlist-card h4 {
+    margin-bottom: 8px;
+}
+
+.outfit-card p,
+.wishlist-card p {
+    margin-bottom: 3px;
+}
+
+.delete-outfit {
+    margin-top: 8px;
+    background: #ff6b6b;
+    border: none;
+    padding: 8px;
+    color: #fff;
+    width: 100%;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.delete-outfit:hover {
+    background: #d95353;
+}
+
+outfit-img-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+}
+
+.outfit-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =====================================================
+    FILTERS
+====================================================== */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.filters label {
+    margin-top: 0;
+}
+
+/* ===================================================
+    LISTS
+=================================================== */
+
+#packing-list,
+#notes-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+#packing-list li,
+#notes-list li {
+    background: #fff;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* =========================================================
+    BUDGET SUMMARY
+========================================================= */
+
+.budget-summary {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+/* ========================================================
+    FOOTER
+========================================================= */
+
+.fcc-footer {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 30px;
+    color: var(--subtext);
+}
